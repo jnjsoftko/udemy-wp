@@ -5,6 +5,7 @@ function university_post_types() {
         'has_archive' => true,
         'public' => true,
         'show_in_rest' => true,
+        'supports' => array('title', 'editor', 'excerpt'),
         'labels' => array(
             'name' => 'Events',
             'add_new' => 'Add New Event',
