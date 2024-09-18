@@ -5,3 +5,7 @@ wp-login.php
 
 uploads/
 plugins/
+
+# nodejs
+node_modules/
+build/
