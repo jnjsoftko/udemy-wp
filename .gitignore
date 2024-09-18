@@ -2,3 +2,6 @@ _docs/
 wp-admin/
 wp-config.php
 wp-login.php
+
+uploads/
+plugins/

@@ -39,7 +39,7 @@ function university_post_types() {
     // Professor Post Type
     register_post_type('professor', array(
         'show_in_rest' => true,
-        'supports' => array('title', 'editor'),
+        'supports' => array('title', 'editor', 'thumbnail'),
         'public' => true,
         'labels' => array(
             'name' => 'Professors',
@@ -52,7 +52,7 @@ function university_post_types() {
         'menu_icon' => 'dashicons-welcome-learn-more'
     ));
 }
-  
+// Maximum upload file size
 add_action('init', 'university_post_types');
 
 // function change_custom_post_label() {
