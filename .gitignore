@@ -9,3 +9,7 @@ plugins/
 # nodejs
 node_modules/
 build/
+
+# secret
+vendor/
+.env

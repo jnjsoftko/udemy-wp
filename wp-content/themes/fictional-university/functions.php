@@ -1,4 +1,15 @@
 <?php
+function get_google_map_api_key() {
+  if ( ! defined( 'ABSPATH' ) ) {
+    define( 'ABSPATH', __DIR__ . '/' );
+  }
+  require_once ABSPATH . 'vendor/autoload.php';
+  $dotenv = Dotenv\Dotenv::createImmutable(ABSPATH);
+  $dotenv->load();
+  $google_map_key = trim($_ENV['GOOGLE_MAP_KEY']);
+  return $google_map_key;
+}
+
 function pageBanner($args = NULL) {
   
   if (!isset($args['title'])) {
@@ -74,3 +85,10 @@ function university_adjust_queries($query) {
 }
 
 add_action('pre_get_posts', 'university_adjust_queries');
+
+function universityMapKey($api) {
+  $api['key'] = get_google_map_api_key();
+  return $api;
+}
+
+add_filter('acf/fields/google_map/api', 'universityMapKey');
