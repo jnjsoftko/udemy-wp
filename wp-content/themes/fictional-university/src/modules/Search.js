@@ -44,7 +44,6 @@ class Search {
   }
 
   getResults() {
-    // $.getJSON("/wp-json/wp/v2/posts?search=" + this.searchField.val(), posts => {
     $.getJSON(universityData.root_url + "/wp-json/wp/v2/posts?search=" + this.searchField.val(), posts => {
       this.resultsDiv.html(`
         <h2 class="search-overlay__section-title">General Information</h2>
@@ -69,6 +68,8 @@ class Search {
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active")
     $("body").addClass("body-no-scroll")
+    this.searchField.val("")
+    setTimeout(() => this.searchField.focus(), 301)
     console.log("our open method just ran!")
     this.isOverlayOpen = true
   }
