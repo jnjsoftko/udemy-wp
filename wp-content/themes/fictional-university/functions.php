@@ -1,4 +1,6 @@
 <?php
+require get_theme_file_path('/inc/search-route.php');
+
 function get_google_map_api_key() {
   if ( ! defined( 'ABSPATH' ) ) {
     define( 'ABSPATH', __DIR__ . '/' );
