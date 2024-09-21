@@ -30,4 +30,4 @@ class MyNotes {
 
 }
 
-export default MyNotes;
+export default MyNotes; 
