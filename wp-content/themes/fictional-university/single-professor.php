@@ -3,13 +3,13 @@
   get_header();
 
   while(have_posts()) {
-    the_post(); 
+    the_post();
     pageBanner();
-    ?>
+     ?>
+    
 
     <div class="container container--narrow page-section">
           
-
       <div class="generic-content">
         <div class="row group">
 
@@ -51,7 +51,7 @@
 
             ?>
 
-            <span class="like-box" data-exists="<?php echo $existStatus; ?>">
+            <span class="like-box" data-professor="<?php the_ID(); ?>" data-exists="<?php echo $existStatus; ?>">
               <i class="fa fa-heart-o" aria-hidden="true"></i>
               <i class="fa fa-heart" aria-hidden="true"></i>
               <span class="like-count"><?php echo $likeCount->found_posts; ?></span>
@@ -79,8 +79,6 @@
       ?>
 
     </div>
-    
-
     
   <?php }
 
