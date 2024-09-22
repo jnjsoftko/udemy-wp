@@ -4,7 +4,11 @@ wp-config.php
 wp-login.php
 
 uploads/
-plugins/
+# wp-content/plugins/
+wp-content/plugins/manual-image-crop/
+wp-content/plugins/members/
+wp-content/plugins/regenerate-thumbnails/
+
 
 # nodejs
 node_modules/
