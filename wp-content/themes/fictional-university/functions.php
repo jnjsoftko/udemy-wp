@@ -1,5 +1,6 @@
 <?php
 require get_theme_file_path('/inc/search-route.php');
+require get_theme_file_path('/inc/like-route.php');
 
 function get_google_map_api_key() {
   if ( ! defined( 'ABSPATH' ) ) {
