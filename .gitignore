@@ -8,7 +8,9 @@ uploads/
 wp-content/plugins/manual-image-crop/
 wp-content/plugins/members/
 wp-content/plugins/regenerate-thumbnails/
+wp-content/plugins/loco-translate/
 
+wp-content/languages/
 
 # nodejs
 node_modules/
