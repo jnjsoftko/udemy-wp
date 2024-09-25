@@ -13,6 +13,7 @@ wp-content/plugins/presto-player/
 wp-content/plugins/brads-boilerplate-block-plugin/
 
 wp-content/languages/
+languages/
 
 # nodejs
 node_modules/
