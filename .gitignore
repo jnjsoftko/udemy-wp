@@ -15,6 +15,9 @@ wp-content/plugins/brads-boilerplate-block-plugin/
 wp-content/languages/
 languages/
 
+# log
+*.log
+
 # nodejs
 node_modules/
 build/
