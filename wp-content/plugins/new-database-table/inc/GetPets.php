@@ -1,6 +1,12 @@
 <?php 
 
 class GetPets {
+  // Declare the properties explicitly
+  public $args;
+  public $placeholders;
+  public $count;
+  public $pets;
+
   function __construct() {
     global $wpdb;
     $tablename = $wpdb->prefix . 'pets';
@@ -14,27 +20,35 @@ class GetPets {
     $countQuery .= $this->createWhereText();
     $query .= " LIMIT 100";
 
-    $this->count = $wpdb->get_var($wpdb->prepare($countQuery, $this->placeholders));
-    $this->pets = $wpdb->get_results($wpdb->prepare($query, $this->placeholders));
+    // Prepare the query only if placeholders exist
+    if (!empty($this->placeholders)) {
+      $this->count = $wpdb->get_var($wpdb->prepare($countQuery, ...$this->placeholders));
+      $this->pets = $wpdb->get_results($wpdb->prepare($query, ...$this->placeholders));
+    } else {
+        // Run query without prepare if no arguments
+        $this->count = $wpdb->get_var($countQuery);
+        $this->pets = $wpdb->get_results($query);
+    }
+    // $this->count = $wpdb->get_var($wpdb->prepare($countQuery, $this->placeholders));
+    // $this->pets = $wpdb->get_results($wpdb->prepare($query, $this->placeholders));
   }
 
   function getArgs() {
     $temp = array(
-      'favcolor' => sanitize_text_field($_GET['favcolor']),
-      'species' => sanitize_text_field($_GET['species']),
-      'minyear' => sanitize_text_field($_GET['minyear']),
-      'maxyear' => sanitize_text_field($_GET['maxyear']),
-      'minweight' => sanitize_text_field($_GET['minweight']),
-      'maxweight' => sanitize_text_field($_GET['maxweight']),
-      'favhobby' => sanitize_text_field($_GET['favhobby']),
-      'favfood' => sanitize_text_field($_GET['favfood']),
+      'favcolor' => isset($_GET['favcolor']) ? sanitize_text_field($_GET['favcolor']) : '',
+      'species' => isset($_GET['species']) ? sanitize_text_field($_GET['species']) : '',
+      'minyear' => isset($_GET['minyear']) ? sanitize_text_field($_GET['minyear']) : '',
+      'maxyear' => isset($_GET['maxyear']) ? sanitize_text_field($_GET['maxyear']) : '',
+      'minweight' => isset($_GET['minweight']) ? sanitize_text_field($_GET['minweight']) : '',
+      'maxweight' => isset($_GET['maxweight']) ? sanitize_text_field($_GET['maxweight']) : '',
+      'favhobby' => isset($_GET['favhobby']) ? sanitize_text_field($_GET['favhobby']) : '',
+      'favfood' => isset($_GET['favfood']) ? sanitize_text_field($_GET['favfood']) : ''
     );
 
     return array_filter($temp, function($x) {
-      return $x;
+        return $x;
     });
-
-  }
+}
 
   function createPlaceholders() {
     return array_map(function($x) {
